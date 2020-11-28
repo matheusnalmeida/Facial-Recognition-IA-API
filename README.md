@@ -1,15 +1,15 @@
 # Facial-Recognition-IA-API
-Api para reconhecimento facial em imagens utilizando o serviço de reconhecimento facial da Azure
+Api para reconhecimento facial em imagens utilizando o serviço de reconhecimento facial da Azure.
 
 ## Backend
 
 ### 1 - Especificações técnicas
 
-- O backend é uma API desenvolvida na linguagem c#(dotnet core 3.1 ou mais recente) em que basicamente utiliza o serviço de reconhecimento facial da azure para análise das imagens.
+- O backend é uma API desenvolvida na linguagem c#(dotnet core 5.0 ou mais recente) em que basicamente utiliza o serviço de reconhecimento facial da azure para análise das imagens.
 
 ### 2 - Configuração
 
-- Para execução, somente é ter o dotnet 3.1 ou mais recente instalado e rodar a aplicação seja visual studio ou em um terminal com o comando ```dotnet run```.
+- Para execução, somente é ter o dotnet 5.0 ou mais recente instalado e rodar a aplicação seja visual studio ou em um terminal com o comando ```dotnet run```.
 
 ### 3 - Funcionalidades
 
