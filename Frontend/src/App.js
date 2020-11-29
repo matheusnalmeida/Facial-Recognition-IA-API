@@ -12,11 +12,13 @@ function App() {
   const [retornaMediaIdade, setRetornaMediaIdade] = useState(null)
   const [retornaGeneros, setRetornaGeneros] = useState(null)
   const [loading, setLoading] = useState(false)
-
+  const [errorContent, setErrorContent] = useState('')
   const [error, setError] = useState('')
 
   async function handleOnSubmit(e) {
     e.preventDefault()
+    setErrorContent('')
+    setError('')
     if(link === ''){
       return setError('Precisa por um Link para enviar!')
     }
@@ -56,7 +58,9 @@ function App() {
     setRetornaMediaIdade(jsonRetornaMediaIdade)
     setRetornaGeneros(jsonRetornaGeneros)
     }catch(err){
-      console.log(err)
+      setErrorContent('Imagem não reconhecida!')
+      setLoading(false)
+
     }
 
 
@@ -68,6 +72,8 @@ function App() {
     setRetornaSentimentos(null)
     setRetornaMediaIdade(null)
     setRetornaGeneros(null)
+    setError('')
+    setErrorContent('')
     setLink(e.target.value)
   }
 
@@ -90,9 +96,11 @@ function App() {
         <button type="submit" className="form-facial__button"><FaceRecog/> Faça o reconhecimento facial</button>
       </form>
   {!link && error && <h2 className="error">{error}</h2>}
+  {errorContent && <h2 className="error">{errorContent}</h2>}
       {link && <div className="preview-image">
         <img src={link} alt="imagem link"/>
       </div>}
+      
       {verificaRosto && retornaSentimentos && retornaMediaIdade && retornaGeneros && 
        <div className="serch-result">
         <div className="have-face">
