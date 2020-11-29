@@ -32,7 +32,7 @@ namespace IA_Reconhecimento_Facial.Service
             {
                 StatusCode = HttpStatusCode.OK,
                 Message = result.Count != 0 ? string.Format("Foram encontrados {0} rosto(s) na imagem.",result.Count) : "Não foram encontrados rostos na imagem.", 
-                Retorno = true,
+                Retorno = result.Count != 0
             };
         }
 
@@ -175,7 +175,7 @@ namespace IA_Reconhecimento_Facial.Service
                 }
             }
 
-            var media = idades.Sum() / idades.Count;
+            var media = idades.Count == 0 ? 0 : idades.Sum() / idades.Count;
 
             return new ServiceResponse<double>
             {
