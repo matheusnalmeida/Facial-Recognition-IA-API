@@ -18,6 +18,8 @@ namespace IA_Reconhecimento_Facial
 {
     public class Startup
     {
+        public readonly string FreeOrigins = "_FreeOrigin";
+
         public IConfiguration Configuration { get; }
 
         public Startup(IConfiguration configuration)
@@ -34,6 +36,16 @@ namespace IA_Reconhecimento_Facial
         public void ConfigureServices(IServiceCollection services)
         {
             InjetarServices(services);
+             services.AddCors(options =>
+            {
+                options.AddPolicy(name: FreeOrigins,
+                                builder =>
+                                {
+                                    builder.AllowAnyOrigin()
+                                     .AllowAnyMethod()
+                                        .AllowAnyHeader();
+                                });
+            });
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
@@ -52,6 +64,8 @@ namespace IA_Reconhecimento_Facial
             }
 
             //app.UseHttpsRedirection();
+
+            app.UseCors(FreeOrigins);  
 
             app.UseRouting();
 
